@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>분리배출 가이드</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="{{url_for('static', filename='css/bootstrap.css')}}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{{url_for('static', filename='css/mdb.min.css')}}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{{url_for('static', filename='css/style.min.css')}}" rel="stylesheet">
+  <style type="text/css">
+    /* Necessary for full page carousel*/
+    html,
+    body,
+    header,
+    .view {
+      height: 100%;
+    }
+
+    /* Carousel*/
+    .carousel,
+    .carousel-item,
+    .carousel-item.active {
+      height: 100%;
+    }
+    .carousel-inner {
+      height: 100%;
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+      .navbar:not(.top-nav-collapse) {
+          background: #1C2331!important;
+      }
+  }
+   td{
+      font-size: 1.1em !important;
+    }
+    span{
+      font-weight: bold;
+      font-size: 1.1em !important;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  
+
+
+
+  <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">
+        <strong>또이조</strong>
+      </a>
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://www.kwaste.or.kr/bbs/download.php?bo_table=board17&wr_id=113&no=0" target="_blank">Download Guide pdf</a>
+        </ul>
+
+        <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a href="https://github.com/aprilbom/Recycle-Guide" class="nav-link border border-light rounded waves-effect waves-light"
+              target="_blank">
+              <i class="fab fa-github mr-2"></i>GitHub
+            </a>
+          </li>
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  <!-- Navbar -->
+  <!-- data-ride="carousel" -->
+  <!--Carousel Wrapper-->
+  <div id="carousel-example-1z" class="carousel slide carousel-fade">
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+
+      <!--First slide-->
+      <div class="carousel-item active">
+        <div class="view">
+
+          <!--Video source-->
+          <style>
+            body {
+              background: url(https://k.kakaocdn.net/dn/AeJcO/btqxHTHAt00/ODfj37eWqXHkxyr84dxFek/img.png) no-repeat center center fixed; 
+              -webkit-background-size: cover;
+              -moz-background-size: cover;
+              -o-background-size: cover;
+              background-size: cover;
+            }
+          </style>>
+
+
+
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            <form action="/" method="post" enctype="multipart/form-data">
+              <!-- Content -->
+              <div class="text-center white-text mx-5 wow fadeIn">
+                <h1 class="mb-4">
+                  <strong>분리 배출을 도와드립니다.</strong>
+                </h1>
+
+                <p>
+                  <strong>헷갈리는 쓰레기의 사진을 촬영하여 업로드 해보세요.</strong>
+                </p>
+
+                <p class="mb-4 d-none d-md-block">
+                  <strong></strong>
+                </p>
+
+                <a class="btn btn-outline-white btn-lg">
+                  <div class="file_input">
+                    <label>
+                      <i class="fas fa-folder-open"></i>
+                      <input type="file" accept="image/*" name = "file" onchange="javascript:document.getElementById('file_route').value=this.value">
+                    </label>
+                    <input type="text" readonly="readonly" title="File Route" id="file_route">
+                  </div>
+                  <button type="submit" class="btn border border-light rounded waves-effect waves-light">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </a>
+              </div>
+              <!-- Content -->
+            </form>
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/First slide-->
+    </div>
+    <!--/.Slides-->
+  </div>
+  <!--/.Carousel Wrapper-->
+
+  {% if answer%}
+ <!--Main layout-->
+  <main style="display: table; margin: 0 auto;">
+    <div class="container" >
+      <!--Section: Main info-->
+      <section class="mt-5 wow fadeIn">
+        <!--Grid row-->
+        <div class="row" style="width: 1000px;">
+          <!--Grid column-->
+          <div style="width: 100%;">
+
+            <!-- Main heading -->
+            <h3 class="h3 mb-3" style="padding-top: 25px;">실행 결과: </h3>
+            <table style="width: 100%; table-layout: fixed;background-color: white;">
+              <tr style="width: 50%;">
+                <td><p><span>{{ korean.korean }}</span> : "{{resultData.name}}" 로 분류하세요.</p></td>
+                <td rowspan="3">
+                  {% if True %}
+                  <img src="{{ url_for('static', filename=image_file) }}" width="80%" align="Right">
+                  {% endif %}
+                </td>
+              </tr>
+              <tr>
+                <td><div><span>대분류</span>: {{resultData.name}}</div></td>
+              </tr>
+              <tr>
+                <td><div><b><span>분류 방법</span>: <br></b>
+                {% autoescape false %}
+                {{ resultData.solution | replace("\n", "<br/>") }}
+                {% endautoescape %}
+              </div></td>
+              </tr>
+            </table>
+
+            <br>           
+          </div>
+          <!--Grid column-->
+        <!--Grid row-->
+      </section>
+      <!--Section: Main info-->
+    </div>
+  </main>
+  <!--Main layout-->
+  {% endif %}
+
+
+  <!--Footer-->
+  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+    <!--Call to action
+    <div class="pt-4">
+      <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank" role="button">Download Sourcecode
+        <i class="fas fa-download ml-2"></i>
+      </a>
+      <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">leave comments
+        <i class="fas fa-graduation-cap ml-2"></i>
+      </a>
+    </div>-->
+    <!--/.Call to action-->
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3">
+      © 2019 Copyright:
+      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> 또이조 in KW 해커톤 </a>
+    </div>
+    <!--/.Copyright-->
+
+  </footer>
+  <!--/.Footer-->
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.3.1.min.js')}}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{{url_for('static', filename='js/popper.min.js')}}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{{url_for('static', filename='js/mdb.min.js')}}"></script>
+  <!-- Initializations -->
+  <script type="text/javascript">
+    // Animations initializations
+    new WOW().init();
+  </script>
+
+  <div class="container">
+      {% block content %}
+      {% endblock %}
+  </div>
+</body>
+
+</html>
